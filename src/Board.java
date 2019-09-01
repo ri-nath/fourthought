@@ -60,37 +60,7 @@ public class Board {
         return false;
     }
 
-    public void randomlyFillBoard() {
-        for (int y = 0; y < board.length; y++) {
-            for (int x = 0; x < board[0].length; x++) {
-                if (rand.nextBoolean()) {
-                    board[y][x] = Constants.VALUES.BLUE;
-                } else {
-                    board[y][x] = Constants.VALUES.RED;
-                }
-            }
-        }
+    public boolean colIsFull(int col) {
+        return board[0][col] != Constants.VALUES.NONE;
     }
-
-    /**public void test() {
-        place(Constants.VALUES.RED, 1);
-        place(Constants.VALUES.BLUE, 2);
-        place(Constants.VALUES.RED, 2);
-        place(Constants.VALUES.BLUE, 3);
-        place(Constants.VALUES.BLUE, 3);
-        place(Constants.VALUES.RED, 3);
-        place(Constants.VALUES.BLUE, 4);
-        place(Constants.VALUES.BLUE, 4);
-        place(Constants.VALUES.BLUE, 4);
-        place(Constants.VALUES.RED, 4);
-
-        System.out.println(Arrays.deepToString(board));
-        if (checkForWin(Constants.VALUES.BLUE)) {
-            System.out.println("Blue");
-        } else if (checkForWin(Constants.VALUES.RED)) {
-            System.out.println("Red");
-        } else {
-            System.out.println("Tie");
-        }
-    }**/
 }
