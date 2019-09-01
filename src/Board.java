@@ -24,6 +24,8 @@ public class Board {
                 return;
             }
         }
+
+        System.out.println(Arrays.deepToString(board));
     }
 
     public boolean checkForWin(Constants.VALUES piece)  {

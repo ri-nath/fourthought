@@ -1,7 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        /**Game game = new Game();
-        game.place(Constants.VALUES.RED, 0);
+        Game game = Game.getInstance();
+        game.register(new Human());
+        game.register(new Connector());
+
+        game.init();
+        /**game.place(Constants.VALUES.RED, 0);
         game.place(Constants.VALUES.BLUE, 1);
         game.place(Constants.VALUES.RED, 0);
         game.place(Constants.VALUES.BLUE, 2);
