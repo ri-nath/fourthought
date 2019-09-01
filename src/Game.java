@@ -2,7 +2,14 @@ public class Game {
     Board board;
     Constants.VALUES player;
 
-    public Game() {
+    private static Game instance;
+    public static Game getInstance() {
+        if (instance == null)
+            instance = new Game();
+        return instance;
+    }
+
+    private Game() {
         board = new Board();
         player = Constants.VALUES.RED;
     }
