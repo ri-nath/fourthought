@@ -1,3 +1,5 @@
+package lib;
+
 public enum Values {
     NONE("None") {
         public Values next() {
