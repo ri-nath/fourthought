@@ -63,7 +63,7 @@ public class Dropper extends JButton implements ActionListener, MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        if (e.getSource()==this) {
+        if (e.getSource()==this && enabled) {
             this.setBackground(this.hoverColor);
         }
     }
