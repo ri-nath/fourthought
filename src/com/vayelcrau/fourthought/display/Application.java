@@ -1,6 +1,8 @@
 package com.vayelcrau.fourthought.display;
 
 import com.vayelcrau.fourthought.Fourthought;
+import com.vayelcrau.fourthought.display.components.Dropper;
+import com.vayelcrau.fourthought.display.components.Slot;
 import com.vayelcrau.fourthought.game.Game;
 import lib.Values;
 
@@ -9,9 +11,9 @@ import java.awt.*;
 
 public class Application extends JFrame {
 
-    Slot[][] slots;
-    Dropper[] droppers;
-    Game game;
+    private Slot[][] slots;
+    private Dropper[] droppers;
+    private Game game;
 
     public Application() {
         initUI();
@@ -19,14 +21,15 @@ public class Application extends JFrame {
 
     private void initUI() {
         game = Game.getInstance();
-        droppers = new Dropper[7];
-        slots = new Slot[6][7];
-        setSize(800, 900);
+
+        setSize(900, 900);
         setTitle("Application");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         setLayout(new GridLayout(7, 7));
+        droppers = new Dropper[7];
+        slots = new Slot[6][7];
 
         for (int i = 0; i < 7; i++) {
             Dropper dropper = new Dropper(i);
@@ -41,6 +44,8 @@ public class Application extends JFrame {
                 add(slots[y][x]);
             }
         }
+
+        pack();
     }
 
     public void updateBoard() {
