@@ -15,7 +15,9 @@ public class OriginNode  {
         nodeMap = new HashMap<>();
 
         for (int i = 0; i < 7; i++) {
-            nodeMap.put(i, new Node(board, Values.BLUE, 2));
+            Board copy = board.getCopyOfBoard();
+            copy.place(Values.RED, i);
+            nodeMap.put(i, new Node(copy, Values.BLUE, 2));
         }
     }
 
@@ -32,7 +34,6 @@ public class OriginNode  {
     public int findBestMove() {
         double[] points = new double[7];
         int index = 0;
-        double max = points[0];
 
         if (checkForImmediateWin() != -1) return checkForImmediateWin();
 
@@ -48,13 +49,25 @@ public class OriginNode  {
             points[i] = nodeMap.get(i).getValue();
         }
 
+        double max = points[0];
+        System.out.println("Starting max: " + max);
+
+
+
+        System.out.println("vvvvvvvvvvvv");
+
         for (int i = 0; i < 7; i++) {
             System.out.println(i + ": " + points[i] + " points");
+            System.out.println("Position " + i + " with " + points[i] + " points vs position " + index + " with " + max + "points.");
             if (max < points[i]) {
                 max = points[i];
                 index = i;
             }
         }
+
+        System.out.println("Best move is at "+ index+ " with " + max + " points.");
+
+        System.out.println("^^^^^^^^^^^^");
 
         return index;
     }
