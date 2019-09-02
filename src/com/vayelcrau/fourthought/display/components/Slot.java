@@ -1,4 +1,4 @@
-package com.vayelcrau.fourthought.display;
+package com.vayelcrau.fourthought.display.components;
 
 import lib.Values;
 
@@ -7,16 +7,11 @@ import java.awt.*;
 
 public class Slot extends JLabel {
 
-    Slot() {
+    public Slot() {
         super();
         setBackground(Color.GRAY);
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
         setOpaque(true);
-    }
-
-    @Override
-    public Dimension getPreferredSize() {
-        return new ProportionalDimension(super.getPreferredSize(), 1);
     }
 
     public void updateColor(Values piece) {

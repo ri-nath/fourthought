@@ -3,7 +3,7 @@ package lib;
 import java.awt.*;
 
 public enum Values {
-    NONE("None", Color.LIGHT_GRAY) {
+    NONE("None", Color.GRAY) {
         public Values next() {
             return Values.NONE;
         }

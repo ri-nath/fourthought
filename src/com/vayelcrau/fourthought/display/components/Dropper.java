@@ -1,4 +1,4 @@
-package com.vayelcrau.fourthought.display;
+package com.vayelcrau.fourthought.display.components;
 
 import com.vayelcrau.fourthought.game.Game;
 import lib.Values;
@@ -15,12 +15,12 @@ public class Dropper extends JButton implements ActionListener, MouseListener {
     private boolean enabled;
     private int id;
 
-    Font defaultFont = new Font("Gill Sans MT",Font.BOLD,14);
-    Color textColor = Color.DARK_GRAY;
-    Color backgroundColor = Color.GRAY;
-    Color hoverColor = Color.LIGHT_GRAY;
+    private final Font defaultFont = new Font("Gill Sans MT",Font.BOLD,14);
+    private final Color textColor = Color.DARK_GRAY;
+    private final Color backgroundColor = Color.GRAY;
+    private final Color hoverColor = Color.LIGHT_GRAY;
 
-    Dropper(int identification) {
+    public Dropper(int identification) {
         game = Game.getInstance();
         id = identification;
         enabled = true;
