@@ -58,9 +58,5 @@ public class Application extends JFrame {
                 slots[y][x].updateColor(game.getBoard().getValue(y, x));
             }
         }
-
-        if (game.getTurn() == Values.RED) {
-            Fourthought.getInstance().move();
-        }
     }
 }

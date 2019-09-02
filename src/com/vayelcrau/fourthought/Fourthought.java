@@ -19,6 +19,7 @@ public class Fourthought{
             instance = new Fourthought();
         return instance;
     }
+
     private Fourthought() {
         game = Game.getInstance();
         rand = new Random();
@@ -26,11 +27,11 @@ public class Fourthought{
 
     public void move() {
         depth = 0;
-        Board currentBoard = game.getBoard().getCopyOfBoard();
-        game.place(color, calculateBestMove(currentBoard));
+        game.place(color, calculateBestMove());
     }
 
-    public int calculateBestMove(Board currentBoard) {
+    public int calculateBestMove() {
+        Board currentBoard = game.getBoard().getCopyOfBoard();
         int bestMove = testAllMoves(currentBoard);
         if (bestMove != -1) return bestMove;
 
@@ -47,7 +48,7 @@ public class Fourthought{
     public boolean calculateMove(Board board, int depth) {
         int bestMove;
         int currentDepth = depth;
-        if (depth > 2) return false;
+        if (depth > 3) return false;
 
         for (int i = 0; i < 7; i++) {
             Board copy = board.getCopyOfBoard();
@@ -61,7 +62,7 @@ public class Fourthought{
                 Board copy = board.getCopyOfBoard();
                 copy.place(Values.BLUE, i);
                 copy.place(Values.RED, j);
-                calculateMove(copy, depth+1);
+                if (calculateMove(copy, depth+1)) return true;
             }
         }
 

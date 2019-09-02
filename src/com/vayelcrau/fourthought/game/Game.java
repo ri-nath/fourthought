@@ -1,5 +1,6 @@
 package com.vayelcrau.fourthought.game;
 
+import com.vayelcrau.fourthought.Fourthought;
 import com.vayelcrau.fourthought.Main;
 import lib.Values;
 
@@ -23,12 +24,17 @@ public class Game {
         if (player != turn || board.colIsFull(col)) return;
         board.place(turn, col);
         if (board.checkForWin(turn)) {
+            System.out.println("Game over, winner: " + turn.toString());
             turn = Values.NONE;
         } else {
             turn = turn.next();
         }
 
         Main.ex.updateBoard();
+
+        if (turn == Values.RED) {
+            Fourthought.getInstance().move();
+        }
     }
 
     public Values getTurn() {
