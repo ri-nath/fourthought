@@ -32,29 +32,43 @@ public class Fourthought{
 
     public int calculateBestMove(Board currentBoard) {
         int bestMove = testAllMoves(currentBoard);
-
         if (bestMove != -1) return bestMove;
 
         for (int i = 0; i < 7; i++) {
-            Board board = currentBoard.getCopyOfBoard();
-            board.place(color, i);
-            bestMove = testAllMoves(board);
-            if (bestMove != -1) return bestMove;
-        }
-
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                Board board = currentBoard.getCopyOfBoard();
-                board.place(color, i);
-                board.place(color, j);
-                bestMove = testAllMoves(board);
-                if (bestMove != -1) return bestMove;
-            }
+            if (calculateMove(currentBoard.getCopyOfBoard(), 1)) {
+                return i;
+            };
         }
 
         return rand.nextInt(7);
 
     }
+
+    public boolean calculateMove(Board board, int depth) {
+        int bestMove;
+        int currentDepth = depth;
+        if (depth > 2) return false;
+
+        for (int i = 0; i < 7; i++) {
+            Board copy = board.getCopyOfBoard();
+            copy.place(Values.BLUE, i);
+            bestMove = testAllMoves(board);
+            if (bestMove != -1) return true;
+        }
+
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
+                Board copy = board.getCopyOfBoard();
+                copy.place(Values.BLUE, i);
+                copy.place(Values.RED, j);
+                calculateMove(copy, depth+1);
+            }
+        }
+
+        return false;
+    }
+
+
 
     public int testAllMoves(Board board) {
         for (int i = 0; i < 7; i++) {
