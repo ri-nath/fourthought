@@ -8,6 +8,7 @@ import lib.Values;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class Application extends JFrame {
 
@@ -20,6 +21,7 @@ public class Application extends JFrame {
     }
 
     private void initUI() {
+
         game = Game.getInstance();
 
         setSize(900, 900);

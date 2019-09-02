@@ -48,9 +48,10 @@ public class Fourthought{
     public boolean calculateMove(Board board, int depth) {
         int bestMove;
         int currentDepth = depth;
-        if (depth > 3) return false;
+        if (currentDepth > 3) return false;
 
         for (int i = 0; i < 7; i++) {
+            if (!board.colIsFull(i)) continue;
             Board copy = board.getCopyOfBoard();
             copy.place(Values.BLUE, i);
             bestMove = testAllMoves(board);
@@ -62,7 +63,7 @@ public class Fourthought{
                 Board copy = board.getCopyOfBoard();
                 copy.place(Values.BLUE, i);
                 copy.place(Values.RED, j);
-                if (calculateMove(copy, depth+1)) return true;
+                if (calculateMove(copy, currentDepth+1)) return true;
             }
         }
 
@@ -73,7 +74,7 @@ public class Fourthought{
 
     public int testAllMoves(Board board) {
         for (int i = 0; i < 7; i++) {
-            if (board.testMove(color, i)) {
+            if (board.testMove(color, i) && !board.colIsFull(i)) {
                 System.out.println("Found winning move at "+ i+ "!");
                 return i;
             }

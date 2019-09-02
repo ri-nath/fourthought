@@ -43,13 +43,8 @@ public class Dropper extends JButton implements ActionListener, MouseListener {
     }
 
     public void checkIfEnabled() {
-        if (game.getTurn() == Values.BLUE && !game.getBoard().colIsFull(id)) {
-            enabled = true;
-            super.setEnabled(true);
-        } else {
-            enabled = false;
-            super.setEnabled(false);
-        }
+        enabled = (game.getTurn() == Values.BLUE && !game.getBoard().colIsFull(id));
+        super.setEnabled(enabled);
     }
 
     @Override
@@ -63,13 +58,13 @@ public class Dropper extends JButton implements ActionListener, MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        if (e.getSource()==this && enabled) {
+        if (e.getSource() == this && enabled) {
             this.setBackground(this.hoverColor);
         }
     }
     @Override
     public void mouseExited(MouseEvent e) {
-        if (e.getSource()==this) {
+        if (e.getSource() == this) {
             this.setBackground(this.backgroundColor);
         }
     }
