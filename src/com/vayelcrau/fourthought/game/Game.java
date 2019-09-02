@@ -3,8 +3,6 @@ package com.vayelcrau.fourthought.game;
 import com.vayelcrau.fourthought.Main;
 import lib.Values;
 
-import java.util.ArrayList;
-
 public class Game {
     private Board board;
     private Values turn;

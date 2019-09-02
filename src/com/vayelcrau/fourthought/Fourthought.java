@@ -8,9 +8,16 @@ import java.util.Random;
 public class Fourthought{
     private Game game;
     private Random rand;
-    private final Values color = Values.BLUE;
+    private final Values color = Values.RED;
 
-    public Fourthought() {
+    private static Fourthought instance;
+
+    public static Fourthought getInstance() {
+        if (instance == null)
+            instance = new Fourthought();
+        return instance;
+    }
+    private Fourthought() {
         game = Game.getInstance();
         rand = new Random();
     }

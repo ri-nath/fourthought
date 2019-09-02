@@ -1,7 +1,6 @@
 package com.vayelcrau.fourthought;
 
 import com.vayelcrau.fourthought.display.Application;
-import com.vayelcrau.fourthought.game.Game;
 
 import java.awt.*;
 

@@ -1,9 +1,7 @@
 package com.vayelcrau.fourthought.game;
 
-import com.sun.jdi.Value;
 import lib.Values;
 
-import java.awt.*;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -29,8 +27,6 @@ public class Board {
                 return;
             }
         }
-
-        System.out.println(Arrays.deepToString(board));
     }
 
     public boolean checkForWin(Values piece)  {

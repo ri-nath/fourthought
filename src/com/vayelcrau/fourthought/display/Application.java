@@ -1,11 +1,11 @@
 package com.vayelcrau.fourthought.display;
 
+import com.vayelcrau.fourthought.Fourthought;
 import com.vayelcrau.fourthought.game.Game;
+import lib.Values;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Application extends JFrame {
 
@@ -54,6 +54,8 @@ public class Application extends JFrame {
             }
         }
 
+        if (game.getTurn() == Values.RED) {
+            Fourthought.getInstance().move();
+        }
     }
-
 }
