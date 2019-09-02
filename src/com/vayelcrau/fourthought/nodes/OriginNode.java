@@ -5,6 +5,7 @@ import com.vayelcrau.fourthought.nodes.Node;
 import lib.Values;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class OriginNode  {
     HashMap<Integer, Node> nodeMap;
@@ -33,7 +34,6 @@ public class OriginNode  {
 
     public int findBestMove() {
         double[] points = new double[7];
-        int index = 0;
 
         if (checkForImmediateWin() != -1) return checkForImmediateWin();
 
@@ -49,25 +49,15 @@ public class OriginNode  {
             points[i] = nodeMap.get(i).getValue();
         }
 
-        double max = points[0];
-        System.out.println("Starting max: " + max);
-
-
-
-        System.out.println("vvvvvvvvvvvv");
+        int index = new Random().nextInt(7);
+        double max = points[index];
 
         for (int i = 0; i < 7; i++) {
-            System.out.println(i + ": " + points[i] + " points");
-            System.out.println("Position " + i + " with " + points[i] + " points vs position " + index + " with " + max + "points.");
             if (max < points[i]) {
                 max = points[i];
                 index = i;
             }
         }
-
-        System.out.println("Best move is at "+ index+ " with " + max + " points.");
-
-        System.out.println("^^^^^^^^^^^^");
 
         return index;
     }
