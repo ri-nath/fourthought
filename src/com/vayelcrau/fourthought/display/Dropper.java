@@ -18,6 +18,7 @@ public class Dropper extends JButton implements ActionListener {
         game = Game.getInstance();
         id = identification;
         enabled = true;
+        addActionListener(this);
     }
 
     private void drop() {
@@ -37,6 +38,6 @@ public class Dropper extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (enabled) drop();
-        System.out.println("Action");
+        System.out.println(game.getTurn());
     }
 }

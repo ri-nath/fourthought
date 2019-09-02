@@ -30,13 +30,6 @@ public class Application extends JFrame {
 
         for (int i = 0; i < 7; i++) {
             Dropper dropper = new Dropper(i);
-            dropper.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    updateBoard();
-                }
-            });
-
             droppers[i] = dropper;
             add(droppers[i]);
         }
@@ -62,7 +55,5 @@ public class Application extends JFrame {
         }
 
     }
-
-
 
 }

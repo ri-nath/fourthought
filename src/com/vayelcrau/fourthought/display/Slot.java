@@ -9,8 +9,9 @@ public class Slot extends JLabel {
 
     Slot() {
         super();
-        setBackground(Color.GRAY);
+        setBackground(Color.LIGHT_GRAY);
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        setOpaque(true);
     }
 
     public void updateColor(Values piece) {

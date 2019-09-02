@@ -1,5 +1,6 @@
 package com.vayelcrau.fourthought.game;
 
+import com.vayelcrau.fourthought.Main;
 import lib.Values;
 
 import java.util.ArrayList;
@@ -28,6 +29,8 @@ public class Game {
         } else {
             turn = turn.next();
         }
+
+        Main.ex.updateBoard();
     }
 
     public Values getTurn() {
