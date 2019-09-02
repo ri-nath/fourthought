@@ -8,10 +8,13 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class OriginNode  {
-    HashMap<Integer, Node> nodeMap;
-    Board board;
+    private HashMap<Integer, Node> nodeMap;
+    private Board board;
+    private double[] points;
+
 
     public OriginNode(Board board_) {
+        points = new double[7];
         board = board_;
         nodeMap = new HashMap<>();
 
@@ -33,7 +36,6 @@ public class OriginNode  {
     }
 
     public int findBestMove() {
-        double[] points = new double[7];
 
         if (checkForImmediateWin() != -1) return checkForImmediateWin();
 
@@ -60,5 +62,9 @@ public class OriginNode  {
         }
 
         return index;
+    }
+
+    public double[] scores() {
+        return points;
     }
 }

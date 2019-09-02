@@ -20,9 +20,9 @@ public class Node {
         points = 0;
 
         if (color_ == Values.BLUE) {
-            multiplier = -1.0;
+            multiplier = -5.0;
         } else {
-            multiplier = 1.0;
+            multiplier = 5.0;
         }
 
         multiplier *= 1.0/depth;
@@ -31,7 +31,7 @@ public class Node {
     public double getValue() {
         for (int i = 0; i < 7; i++) {
             if (board.testMove(color, i) && !board.colIsFull(i)) {
-                points += 5.0 * multiplier;
+                points += multiplier;
             }
         }
 

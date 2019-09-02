@@ -60,5 +60,21 @@ public class Application extends JFrame {
                 slots[y][x].updateColor(game.getBoard().getValue(y, x));
             }
         }
+
+       if(Fourthought.getInstance().scoreMoves().length > 2) {
+           drawPoints(Fourthought.getInstance().scoreMoves());
+       }
+    }
+
+    private void drawPoints(double[] points) {
+        for (int i = 0; i < points.length; i++) {
+            if (i == Fourthought.getInstance().myMove()) {
+                slots[game.getBoard().getHighestFilledSlot(i)][i].showPoints(points[i]);
+            } else {
+                if (!game.getBoard().colIsFull(i)) {
+                    slots[game.getBoard().getLowestFreeSlot(i)][i].showPoints(points[i]);
+                }
+            }
+        }
     }
 }

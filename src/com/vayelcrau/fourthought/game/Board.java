@@ -7,10 +7,9 @@ import java.util.Random;
 
 public class Board {
     private Values[][] board;
-    private Random rand;
 
     public Board() {
-        rand = new Random();
+
         board = new Values[6][7];
         for (Values[] row : board) {
             Arrays.fill(row, Values.NONE);
@@ -18,7 +17,6 @@ public class Board {
     }
 
     public Board(Values[][] preset) {
-        rand = new Random();
         board = preset;
     }
 
@@ -89,5 +87,29 @@ public class Board {
         Board copy = getCopyOfBoard();
         copy.place(piece, col);
         return copy.checkForWin(piece);
+    }
+
+    public int getLowestFreeSlot(int col) {
+        col = col % board[0].length;
+
+        for (int i = board.length-1; i >= 0; i--) {
+            if (board[i][col] == Values.NONE) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public int getHighestFilledSlot(int col) {
+        col = col % board[0].length;
+
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][col] != Values.NONE) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 }
