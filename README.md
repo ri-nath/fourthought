@@ -1,2 +1,2 @@
-# connector
+# fourthought
 connect four algorithm
