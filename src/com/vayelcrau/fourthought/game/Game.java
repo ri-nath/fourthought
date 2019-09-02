@@ -17,7 +17,7 @@ public class Game {
 
     private Game() {
         board = new Board();
-        turn = Values.RED;
+        turn = Values.BLUE;
     }
 
     public void place(Values player, int col) {

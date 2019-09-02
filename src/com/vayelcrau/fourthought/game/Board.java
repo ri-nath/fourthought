@@ -1,7 +1,9 @@
 package com.vayelcrau.fourthought.game;
 
+import com.sun.jdi.Value;
 import lib.Values;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -67,5 +69,9 @@ public class Board {
 
     public boolean colIsFull(int col) {
         return board[0][col] != Values.NONE;
+    }
+
+    public Values getValue(int y, int x) {
+        return board[y][x];
     }
 }
