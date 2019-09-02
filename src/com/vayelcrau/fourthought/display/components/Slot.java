@@ -9,9 +9,14 @@ public class Slot extends JLabel {
 
     Slot() {
         super();
-        setBackground(Color.LIGHT_GRAY);
+        setBackground(Color.GRAY);
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
         setOpaque(true);
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        return new ProportionalDimension(super.getPreferredSize(), 1);
     }
 
     public void updateColor(Values piece) {
