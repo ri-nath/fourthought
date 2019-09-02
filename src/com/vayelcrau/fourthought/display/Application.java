@@ -8,6 +8,7 @@ import lib.Values;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class Application extends JFrame {
 
@@ -20,6 +21,7 @@ public class Application extends JFrame {
     }
 
     private void initUI() {
+
         game = Game.getInstance();
 
         setSize(900, 900);
@@ -57,10 +59,6 @@ public class Application extends JFrame {
             for (int x = 0; x < slots[0].length; x++) {
                 slots[y][x].updateColor(game.getBoard().getValue(y, x));
             }
-        }
-
-        if (game.getTurn() == Values.RED) {
-            Fourthought.getInstance().move();
         }
     }
 }

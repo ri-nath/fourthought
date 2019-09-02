@@ -17,13 +17,17 @@ public class Board {
         }
     }
 
+    public Board(Values[][] preset) {
+        rand = new Random();
+        board = preset;
+    }
+
     public void place(Values piece, int col)  {
         col = col % board[0].length;
 
         for (int i = board.length-1; i >= 0; i--) {
             if (board[i][col] == Values.NONE) {
                 board[i][col] = piece;
-                checkForWin(piece);
                 return;
             }
         }
@@ -69,5 +73,21 @@ public class Board {
 
     public Values getValue(int y, int x) {
         return board[y][x];
+    }
+
+    public Board getCopyOfBoard() {
+        Values [][] copy = new Values[board.length][];
+        for(int i = 0; i < board.length; i++)
+            copy[i] = board[i].clone();
+
+        return new Board(copy);
+    }
+
+    public boolean testMove(Values piece, int col)  {
+        col = col % board[0].length;
+
+        Board copy = getCopyOfBoard();
+        copy.place(piece, col);
+        return copy.checkForWin(piece);
     }
 }
