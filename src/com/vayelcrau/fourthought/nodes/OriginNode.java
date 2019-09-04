@@ -1,8 +1,7 @@
 package com.vayelcrau.fourthought.nodes;
 
 import com.vayelcrau.fourthought.game.Board;
-import com.vayelcrau.fourthought.nodes.Node;
-import lib.Values;
+import com.vayelcrau.fourthought.Values;
 
 import java.util.HashMap;
 import java.util.Random;

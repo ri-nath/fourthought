@@ -1,7 +1,7 @@
 package com.vayelcrau.fourthought.display.components;
 
 import com.vayelcrau.fourthought.game.Game;
-import lib.Values;
+import com.vayelcrau.fourthought.Values;
 
 import javax.swing.*;
 import java.awt.*;

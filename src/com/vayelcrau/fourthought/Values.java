@@ -1,4 +1,4 @@
-package lib;
+package com.vayelcrau.fourthought;
 
 import java.awt.*;
 

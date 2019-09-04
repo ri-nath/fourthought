@@ -1,7 +1,7 @@
 package com.vayelcrau.fourthought.nodes;
 
 import com.vayelcrau.fourthought.game.Board;
-import lib.Values;
+import com.vayelcrau.fourthought.Values;
 
 public class Node {
     private Board board;

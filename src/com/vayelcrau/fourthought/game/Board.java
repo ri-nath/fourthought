@@ -1,9 +1,8 @@
 package com.vayelcrau.fourthought.game;
 
-import lib.Values;
+import com.vayelcrau.fourthought.Values;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class Board {
     private Values[][] board;
@@ -110,6 +109,6 @@ public class Board {
             }
         }
 
-        return -1;
+        return 0;
     }
 }

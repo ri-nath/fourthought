@@ -4,11 +4,11 @@ import com.vayelcrau.fourthought.Fourthought;
 import com.vayelcrau.fourthought.display.components.Dropper;
 import com.vayelcrau.fourthought.display.components.Slot;
 import com.vayelcrau.fourthought.game.Game;
-import lib.Values;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.sql.Array;
+import java.util.Arrays;
 
 public class Application extends JFrame {
 
@@ -16,7 +16,13 @@ public class Application extends JFrame {
     private Dropper[] droppers;
     private Game game;
 
-    public Application() {
+    private static Application instance;
+    public static Application getInstance() {
+        if (instance == null) instance = new Application();
+        return instance;
+    }
+
+    private Application() {
         initUI();
     }
 
@@ -60,20 +66,12 @@ public class Application extends JFrame {
                 slots[y][x].updateColor(game.getBoard().getValue(y, x));
             }
         }
-
-       if(Fourthought.getInstance().scoreMoves().length > 2) {
-           drawPoints(Fourthought.getInstance().scoreMoves());
-       }
     }
 
-    private void drawPoints(double[] points) {
+    public void drawPoints(double[] points) {
         for (int i = 0; i < points.length; i++) {
-            if (i == Fourthought.getInstance().myMove()) {
-                slots[game.getBoard().getHighestFilledSlot(i)][i].showPoints(points[i]);
-            } else {
-                if (!game.getBoard().colIsFull(i)) {
-                    slots[game.getBoard().getLowestFreeSlot(i)][i].showPoints(points[i]);
-                }
+             if (!game.getBoard().colIsFull(i)) {
+                 slots[game.getBoard().getLowestFreeSlot(i)][i].showPoints(points[i]);
             }
         }
     }

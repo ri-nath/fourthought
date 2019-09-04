@@ -1,8 +1,8 @@
 package com.vayelcrau.fourthought;
 
+import com.vayelcrau.fourthought.display.Application;
 import com.vayelcrau.fourthought.game.Game;
 import com.vayelcrau.fourthought.nodes.OriginNode;
-import lib.Values;
 
 import java.util.Random;
 
@@ -11,8 +11,6 @@ public class Fourthought{
     private Random rand;
     private final Values color = Values.RED;
     private int depth;
-    private OriginNode node;
-    int move;
 
     private static Fourthought instance;
 
@@ -23,7 +21,6 @@ public class Fourthought{
     }
 
     private Fourthought() {
-        move = 0;
         game = Game.getInstance();
         rand = new Random();
     }
@@ -34,17 +31,9 @@ public class Fourthought{
     }
 
     public int calculateBestMove() {
-        node = new OriginNode(game.getBoard().getCopyOfBoard());
-        move = node.findBestMove();
-        return move;
-    }
-
-    public double[] scoreMoves() {
-        if (node == null) return new double[0];
-        return node.scores();
-    }
-
-    public int myMove() {
+        OriginNode node = new OriginNode(game.getBoard().getCopyOfBoard());
+        int move = node.findBestMove();
+        Application.getInstance().drawPoints(node.scores());
         return move;
     }
 }

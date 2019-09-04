@@ -2,7 +2,7 @@ package com.vayelcrau.fourthought.game;
 
 import com.vayelcrau.fourthought.Fourthought;
 import com.vayelcrau.fourthought.Main;
-import lib.Values;
+import com.vayelcrau.fourthought.Values;
 
 import java.util.Random;
 
