@@ -4,11 +4,9 @@ import com.vayelcrau.fourthought.Fourthought;
 import com.vayelcrau.fourthought.display.components.Dropper;
 import com.vayelcrau.fourthought.display.components.Slot;
 import com.vayelcrau.fourthought.game.Game;
-import lib.Values;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class Application extends JFrame {
 
@@ -16,7 +14,13 @@ public class Application extends JFrame {
     private Dropper[] droppers;
     private Game game;
 
-    public Application() {
+    private static Application instance;
+    public static Application getInstance() {
+        if (instance == null) instance = new Application();
+        return instance;
+    }
+
+    private Application() {
         initUI();
     }
 
@@ -58,6 +62,14 @@ public class Application extends JFrame {
         for (int y = 0; y < slots.length; y++) {
             for (int x = 0; x < slots[0].length; x++) {
                 slots[y][x].updateColor(game.getBoard().getValue(y, x));
+            }
+        }
+    }
+
+    public void drawPoints(double[] points) {
+        for (int i = 0; i < points.length; i++) {
+             if (!game.getBoard().colIsFull(i)) {
+                 slots[game.getBoard().getLowestFreeSlot(i)][i].showPoints(points[i]);
             }
         }
     }

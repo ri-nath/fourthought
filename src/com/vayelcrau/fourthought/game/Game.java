@@ -1,8 +1,9 @@
 package com.vayelcrau.fourthought.game;
 
+import com.vayelcrau.fourthought.Constants;
 import com.vayelcrau.fourthought.Fourthought;
 import com.vayelcrau.fourthought.Main;
-import lib.Values;
+import com.vayelcrau.fourthought.Values;
 
 import java.util.Random;
 
@@ -37,7 +38,7 @@ public class Game {
 
         Main.ex.updateBoard();
 
-        if (turn == Values.RED) {
+        if (turn == Constants.FOURTHOUGHT_COLOR) {
             Fourthought.getInstance().move();
         }
     }

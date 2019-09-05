@@ -8,7 +8,7 @@ public class Main {
     public static Application ex;
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
-            ex = new Application();
+            ex = Application.getInstance();
             ex.setVisible(true);
         });
     }

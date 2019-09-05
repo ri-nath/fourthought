@@ -1,7 +1,8 @@
 package com.vayelcrau.fourthought.display.components;
 
+import com.vayelcrau.fourthought.Constants;
 import com.vayelcrau.fourthought.game.Game;
-import lib.Values;
+import com.vayelcrau.fourthought.Values;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,7 +40,7 @@ public class Dropper extends JButton implements ActionListener, MouseListener {
     }
 
     private void drop() {
-        game.place(Values.BLUE, id);
+        game.place(Constants.PLAYER_COLOR, id);
     }
 
     public void checkIfEnabled() {
