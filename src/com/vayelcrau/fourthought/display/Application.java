@@ -7,8 +7,6 @@ import com.vayelcrau.fourthought.game.Game;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Array;
-import java.util.Arrays;
 
 public class Application extends JFrame {
 

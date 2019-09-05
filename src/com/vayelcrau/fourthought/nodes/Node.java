@@ -27,11 +27,10 @@ public class Node {
             multiplier = 5.0;
         }
 
-        multiplier *= 1.0/depth;
+        multiplier *= 1.0/(depth*depth*depth);
     }
 
     public double getValue() {
-        if (depth == 1) multiplier += 100;
 
         for (int i = 0; i < 7; i++) {
             if (board.testMove(color, i) && !board.colIsFull(i)) {
@@ -51,7 +50,9 @@ public class Node {
     public void createNewLayer() {
         if (nodes[0] == null) {
             for (int i = 0; i < 7; i++) {
-                nodes[i] = new Node(board.getCopyOfBoard(), color.next(), depth+1);
+                Board copy = board.getCopyOfBoard();
+                copy.place(color, i);
+                nodes[i] = new Node(copy, color.next(), depth+1);
             }
         } else {
             for (Node node : nodes) {
@@ -62,11 +63,12 @@ public class Node {
 
     public int findBestChild() {
         int col = 0;
-        double max = 0;
+
+        double max = Integer.MIN_VALUE;
 
         for (int i = 0; i < 7; i++) {
             scores[i] = nodes[i].getValue();
-            if (Math.abs(max) < Math.abs(scores[i])) {
+            if (max < scores[i]) {
                 max = scores[i];
                 col = i;
             }
@@ -77,5 +79,11 @@ public class Node {
 
     public double[] getScores() {
         return scores;
+    }
+
+    public void createLayers(int x) {
+        for (int i = 0; i < x; i++) {
+            createNewLayer();
+        }
     }
 }

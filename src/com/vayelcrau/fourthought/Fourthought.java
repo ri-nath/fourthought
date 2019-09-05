@@ -31,9 +31,7 @@ public class Fourthought{
 
     public int calculateBestMove() {
         Node node = new Node(game.getBoard().getCopyOfBoard(), Constants.FOURTHOUGHT_COLOR, 1);
-        node.createNewLayer();
-        node.createNewLayer();
-        node.createNewLayer();
+        node.createLayers(5);
         int move = node.findBestChild();
         Application.getInstance().drawPoints(node.getScores());
         return move;
