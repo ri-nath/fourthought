@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Board {
     private Values[][] board;
 
-    public Board() {
+    Board() {
 
         board = new Values[6][7];
         for (Values[] row : board) {
@@ -15,7 +15,7 @@ public class Board {
         }
     }
 
-    public Board(Values[][] preset) {
+    private Board(Values[][] preset) {
         board = preset;
     }
 
@@ -30,7 +30,7 @@ public class Board {
         }
     }
 
-    public boolean checkForWin(Values piece)  {
+    boolean checkForWin(Values piece)  {
         // horizontal check
         for (int j = 0; j < board[0].length - 3; j++) {
             for (int i = 0; i < board.length; i++) {
@@ -98,17 +98,5 @@ public class Board {
         }
 
         return -1;
-    }
-
-    public int getHighestFilledSlot(int col) {
-        col = col % board[0].length;
-
-        for (int i = 0; i < board.length; i++) {
-            if (board[i][col] != Values.NONE) {
-                return i;
-            }
-        }
-
-        return 0;
     }
 }

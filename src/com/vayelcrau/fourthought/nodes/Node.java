@@ -1,5 +1,6 @@
 package com.vayelcrau.fourthought.nodes;
 
+import com.vayelcrau.fourthought.Constants;
 import com.vayelcrau.fourthought.game.Board;
 import com.vayelcrau.fourthought.Values;
 
@@ -20,11 +21,9 @@ public class Node {
         nodes = new Node[7];
         scores = new double[7];
 
-        if (color_ == Values.BLUE) {
-            multiplier = -5.0;
-        } else {
-            multiplier = 5.0;
-        }
+        multiplier = 1;
+
+        if (color_ == Constants.PLAYER_COLOR) multiplier -= 2;
 
         multiplier *= 100.0/(Math.pow(7, depth));
     }

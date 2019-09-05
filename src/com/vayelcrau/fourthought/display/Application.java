@@ -50,8 +50,6 @@ public class Application extends JFrame {
                 add(slots[y][x]);
             }
         }
-
-        pack();
     }
 
     public void updateBoard() {
