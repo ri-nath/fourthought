@@ -10,12 +10,14 @@ public class Node {
     private int depth;
     private double points;
     private Node[] nodes;
+    double[] scores;
 
     public Node(Board board_, Values color_, int depth_) {
         board = board_;
         color = color_;
         depth = depth_;
         nodes = new Node[7];
+        scores = new double[7];
 
         points = 0;
 
@@ -29,6 +31,8 @@ public class Node {
     }
 
     public double getValue() {
+        if (depth == 1) multiplier += 100;
+
         for (int i = 0; i < 7; i++) {
             if (board.testMove(color, i) && !board.colIsFull(i)) {
                 points += multiplier;
@@ -44,27 +48,34 @@ public class Node {
         return points;
     }
 
-    public void createNewNodes() {
-        if (depth >= 5) return;
-        if (nodes[6] != null) return;
-
-        for (int i = 0; i < 7; i++) {
-            if (!board.colIsFull(i)) {
-                Board copy = board.getCopyOfBoard();
-                copy.place(color, i);
-                if (!copy.checkForWin(color)) {
-                    nodes[i] = new Node(copy, color.next(), depth+1);
-                }
+    public void createNewLayer() {
+        if (nodes[0] == null) {
+            for (int i = 0; i < 7; i++) {
+                nodes[i] = new Node(board.getCopyOfBoard(), color.next(), depth+1);
+            }
+        } else {
+            for (Node node : nodes) {
+                node.createNewLayer();
             }
         }
-
     }
 
-    public void childrenCreateNewNodes() {
-        for (Node node : nodes) {
-            if (node != null) {
-                node.createNewNodes();
+    public int findBestChild() {
+        int col = 0;
+        double max = 0;
+
+        for (int i = 0; i < 7; i++) {
+            scores[i] = nodes[i].getValue();
+            if (Math.abs(max) < Math.abs(scores[i])) {
+                max = scores[i];
+                col = i;
             }
         }
+
+        return col;
+    }
+
+    public double[] getScores() {
+        return scores;
     }
 }

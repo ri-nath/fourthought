@@ -2,14 +2,13 @@ package com.vayelcrau.fourthought;
 
 import com.vayelcrau.fourthought.display.Application;
 import com.vayelcrau.fourthought.game.Game;
-import com.vayelcrau.fourthought.nodes.OriginNode;
+import com.vayelcrau.fourthought.nodes.Node;
 
 import java.util.Random;
 
 public class Fourthought{
     private Game game;
     private Random rand;
-    private final Values color = Values.RED;
     private int depth;
 
     private static Fourthought instance;
@@ -27,13 +26,16 @@ public class Fourthought{
 
     public void move() {
         depth = 0;
-        game.place(color, calculateBestMove());
+        game.place(Constants.FOURTHOUGHT_COLOR, calculateBestMove());
     }
 
     public int calculateBestMove() {
-        OriginNode node = new OriginNode(game.getBoard().getCopyOfBoard());
-        int move = node.findBestMove();
-        Application.getInstance().drawPoints(node.scores());
+        Node node = new Node(game.getBoard().getCopyOfBoard(), Constants.FOURTHOUGHT_COLOR, 1);
+        node.createNewLayer();
+        node.createNewLayer();
+        node.createNewLayer();
+        int move = node.findBestChild();
+        Application.getInstance().drawPoints(node.getScores());
         return move;
     }
 }
