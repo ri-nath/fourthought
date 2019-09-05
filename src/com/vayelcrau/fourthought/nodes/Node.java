@@ -6,11 +6,12 @@ import com.vayelcrau.fourthought.Values;
 public class Node {
     private Board board;
     private Values color;
+
     private double multiplier;
     private int depth;
-    private double points;
+
     private Node[] nodes;
-    double[] scores;
+    private double[] scores;
 
     public Node(Board board_, Values color_, int depth_) {
         board = board_;
@@ -18,8 +19,6 @@ public class Node {
         depth = depth_;
         nodes = new Node[7];
         scores = new double[7];
-
-        points = 0;
 
         if (color_ == Values.BLUE) {
             multiplier = -5.0;
@@ -30,7 +29,8 @@ public class Node {
         multiplier *= 1.0/(depth*depth*depth);
     }
 
-    public double getValue() {
+    private double getValue() {
+        double points = 0;
 
         for (int i = 0; i < 7; i++) {
             if (board.testMove(color, i) && !board.colIsFull(i)) {
@@ -47,7 +47,7 @@ public class Node {
         return points;
     }
 
-    public void createNewLayer() {
+    private void createNewLayer() {
         if (nodes[0] == null) {
             for (int i = 0; i < 7; i++) {
                 Board copy = board.getCopyOfBoard();

@@ -6,10 +6,8 @@ import com.vayelcrau.fourthought.nodes.Node;
 
 import java.util.Random;
 
-public class Fourthought{
+public class Fourthought {
     private Game game;
-    private Random rand;
-    private int depth;
 
     private static Fourthought instance;
 
@@ -21,11 +19,9 @@ public class Fourthought{
 
     private Fourthought() {
         game = Game.getInstance();
-        rand = new Random();
     }
 
     public void move() {
-        depth = 0;
         game.place(Constants.FOURTHOUGHT_COLOR, calculateBestMove());
     }
 
