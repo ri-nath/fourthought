@@ -26,7 +26,7 @@ public class Node {
             multiplier = 5.0;
         }
 
-        multiplier *= 1.0/(depth*depth*depth);
+        multiplier *= 100.0/(Math.pow(7, depth));
     }
 
     private double getValue() {
