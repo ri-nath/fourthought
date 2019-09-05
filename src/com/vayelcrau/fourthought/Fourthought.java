@@ -1,6 +1,7 @@
 package com.vayelcrau.fourthought;
 
 import com.vayelcrau.fourthought.display.Application;
+import com.vayelcrau.fourthought.display.Menu;
 import com.vayelcrau.fourthought.game.Game;
 import com.vayelcrau.fourthought.nodes.Node;
 
@@ -25,9 +26,9 @@ public class Fourthought {
         game.place(Constants.FOURTHOUGHT_COLOR, calculateBestMove());
     }
 
-    public int calculateBestMove() {
+    private int calculateBestMove() {
         Node node = new Node(game.getBoard().getCopyOfBoard(), Constants.FOURTHOUGHT_COLOR, 1);
-        node.createLayers(5);
+        node.createLayers(Menu.getInstance().getLayers() - 1);
         int move = node.findBestChild();
         Application.getInstance().drawPoints(node.getScores());
         return move;
